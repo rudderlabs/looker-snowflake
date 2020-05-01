@@ -14,6 +14,14 @@ explore: autotrack_dau {}
 
 explore: autotrack_mau {}
 
+explore: autotrack_page_traffic {}
+
+explore: autotrack_page_views {}
+
+explore: autotrack_event_freq_by_user {}
+
+explore : autotrack_7_day_visitor_count_moving_average {}
+
 # explore: autotrack {}
 
 # explore: tracks {}
