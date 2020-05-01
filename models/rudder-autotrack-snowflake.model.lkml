@@ -24,6 +24,10 @@ explore : autotrack_7_day_visitor_count_moving_average {}
 
 explore: autotrack_user_agent_daily_level {}
 
+explore: autotrack_utm_source {}
+
+explore: autotrack_utm_campaign {}
+
 # explore: autotrack {}
 
 # explore: tracks {}
