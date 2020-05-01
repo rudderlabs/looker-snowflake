@@ -1,4 +1,4 @@
-  connection: "rudder-autotrack-snowflake"
+connection: "rudder-autotrack-snowflake"
 
 # include all the views
 include: "/views/**/*.view"
@@ -21,6 +21,8 @@ explore: autotrack_page_views {}
 explore: autotrack_event_freq_by_user {}
 
 explore : autotrack_7_day_visitor_count_moving_average {}
+
+explore: autotrack_user_agent_daily_level {}
 
 # explore: autotrack {}
 
