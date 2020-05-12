@@ -5,7 +5,7 @@ include: "/views/**/*.view"
 
 datagroup: rudder_autotrack_snowflake_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+  max_cache_age: "6 hours"
 }
 
 persist_with: rudder_autotrack_snowflake_default_datagroup
