@@ -28,6 +28,8 @@ explore: autotrack_utm_source {}
 
 explore: autotrack_utm_campaign {}
 
+explore: autotrack_dau_example {}
+
 # explore: autotrack {}
 
 # explore: tracks {}
