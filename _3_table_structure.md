@@ -13,6 +13,6 @@ Apart from the above tables, individual tables are also created for every event 
 
 One such table is being referred to in this block:
 
-* **User_Signed_Up**: Contains data pertaining to every user sign-up event. If a different event is associated with user registration, then appropriate view should be created in Looker for that table. There are views that refer to `user_signed_up`. Such references should also be updated. Affected views are **webapp_signups_by_github_utm, webapp_signup_by_referrer, webapp_utm_campaign and webapp_utm_source**
+* **User_Signed_Up**: Contains data pertaining to every user sign-up event. If a different event is associated with user registration, then appropriate view should be created in Looker for that table. There are views that refer to `user_signed_up`. Such references should also be updated. Affected views are [webapp_signups_by_github_utm](views/webapp_signups_by_github_utm.view.lookml), [webapp_signup_by_referrer](views/webapp_signup_by_referrer.view.lookml), [webapp_utm_campaign](views/webapp_utm_campaign.view.lookml) and [webapp_utm_source](views/webapp_utm_source.view.lookml)
 
 
