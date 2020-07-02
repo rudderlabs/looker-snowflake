@@ -88,6 +88,11 @@ view: pages {
     type: string
     sql: ${TABLE}."CONTEXT_PAGE_REFERRER" ;;
   }
+  
+  dimension: referrer_short {
+    type: string
+    sql:  split_part(split_part(${context_page_referrer},'//',2),'/',1) ;;
+  }
 
   dimension: context_page_search {
     type: string
@@ -103,6 +108,25 @@ view: pages {
     type: string
     sql: ${TABLE}."CONTEXT_PAGE_URL" ;;
   }
+  
+  dimension: page {
+    type: string
+    sql:  case
+              when ${context_page_url} is null
+                then null
+              when ${context_page_url} NOT LIKE '%http%'
+                then null
+              when strtok(split_part(trim(context_page_url),'//',2),'/',2) is null
+                then 'Landing Page'
+              when contains(strtok(split_part(trim(context_page_url),'//',2),'/',2),'?')
+                then 'Landing Page'
+              else  left(strtok(split_part(trim(context_page_url),'//',2),'/',2),
+                          len(strtok(split_part(trim(context_page_url),'//',2),'/',2))
+                          - position(split_part(split_part(trim(context_page_url),'//',2),'/',2),'?'))
+          end
+          ;;
+  }
+
 
   dimension: context_screen_density {
     type: number
@@ -137,6 +161,16 @@ view: pages {
   dimension: context_useragent {
     type: string
     sql: ${TABLE}."CONTEXT_USERAGENT" ;;
+  }
+  
+  dimension: current_month {
+    type: date_month
+    sql: CURRENT_DATE() ;;
+  }
+
+  dimension: is_current_month {
+    type: yesno
+    sql: ${current_month} = ${received_month} ;;
   }
 
   dimension: name {
@@ -268,21 +302,49 @@ view: pages {
     ]
   }
 
+  set: page_summary {
+    fields: [
+      url,
+      page,
+      channel,
+      category,
+      page_count,
+      user_count
+    ]
+  }
+
+  set: user_summary {
+    fields: [
+      user_id,
+      page_count
+    ]
+  }
+
   measure: user_count {
     type: count_distinct
     sql: ${TABLE}.user_id ;;
+    drill_fields: [user_summary*]
     link: {
       label: "Current Month Page View Count by User"
-      url: "https://rudderstack.looker.com/looks/5"
+      url: "https://rudderstack.looker.com/looks/12"
     }
   }
 
   measure: page_count {
     type: count
+    drill_fields: [page_summary*]
     link: {
       label: "Current Month Views By Page"
-      url: "https://rudderstack.looker.com/looks/3"
+      url: "https://rudderstack.looker.com/looks/11"
     }
   }
+  set: track_summary {
+    fields: [
+      channel,
+      event_text,
+      count
+    ]
+  }
+
 
 }

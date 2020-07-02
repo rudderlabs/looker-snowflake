@@ -233,7 +233,7 @@ view: tracks {
     drill_fields: [id, context_library_name, context_app_name, context_traits_name, context_os_name]
     link: {
       label: "Current Month Count By Event"
-      url: "https://rudderstack.looker.com/looks/6"
+      url: "https://rudderstack.looker.com/looks/13"
     }
   }
 
