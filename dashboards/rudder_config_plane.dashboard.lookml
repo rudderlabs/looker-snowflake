@@ -569,60 +569,6 @@
     col: 12
     width: 12
     height: 8
-  - title: Current Month Total Page Views
-    name: Current Month Total Page Views
-    model: rudder-webapp-snowflake
-    explore: pages
-    type: single_value
-    fields: [pages.received_month, pages.page_count]
-    fill_fields: [pages.received_month]
-    sorts: [pages.received_month desc]
-    limit: 500
-    dynamic_fields: [{table_calculation: percent_change, label: Percent Change, expression: "${pages.page_count}/offset(${pages.page_count},1)\
-          \ - 1", value_format: !!null '', value_format_name: percent_0, _kind_hint: measure,
-        _type_hint: number}]
-    query_timezone: America/Los_Angeles
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    comparison_label: Change Over Last Month
-    show_view_names: false
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    defaults_version: 1
-    series_types: {}
-    listen: {}
-    row: 0
-    col: 0
-    width: 6
-    height: 6
   - title: Current Month Total Users
     name: Current Month Total Users
     model: rudder-webapp-snowflake
@@ -788,5 +734,58 @@
     listen: {}
     row: 0
     col: 18
+    width: 6
+    height: 6
+  - title: Monthly Page Views
+    name: Monthly Page Views
+    model: rudder-webapp-snowflake
+    explore: pages
+    type: single_value
+    fields: [pages.timestamp_month, pages.page_count]
+    fill_fields: [pages.timestamp_month]
+    sorts: [pages.timestamp_month desc]
+    limit: 500
+    dynamic_fields: [{table_calculation: change, label: Change, expression: "${pages.page_count}/offset(${pages.page_count},1)-1",
+        value_format: !!null '', value_format_name: percent_0, is_disabled: false,
+        _kind_hint: measure, _type_hint: number}]
+    query_timezone: America/Los_Angeles
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: true
+    comparison_type: change
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    defaults_version: 1
+    series_types: {}
+    listen: {}
+    row: 0
+    col: 0
     width: 6
     height: 6
