@@ -1,4 +1,4 @@
-# What does this Block do for me?
+# Looker Analytics Block for RudderStack
 
 This block helps in creating a **comprehensive dashboard for website and user events metrics** by leveraging the data captured using 
 [RudderStack](https://rudderstack.com/).
